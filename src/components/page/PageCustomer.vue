@@ -102,10 +102,7 @@ export default {
 
   computed: {
     ...mapCustomerState([`error`, `success`]),
-    // You can read more about mapping field
-    // values in two of my previous articles.
-    // https://markus.oberlehner.net/blog/form-fields-two-way-data-binding-and-vuex/
-    // https://markus.oberlehner.net/blog/how-to-handle-multi-row-forms-with-vue-vuex-and-vuex-map-fields/
+
     ...mapNameFields([`rows[0].firstName`, `rows[0].lastName`]),
     ...mapContactMultiRowFields({ contacts: `rows` }),
     ...mapAddressFields([`rows[0].zip`, `rows[0].town`, `rows[0].street`])
