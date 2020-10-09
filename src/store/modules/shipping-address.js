@@ -1,32 +1,22 @@
 import { createHelpers } from 'vuex-map-fields'
 
-// The API util is used to send the
-// data the user enters to our server.
 import api from '../../utils/api'
 
-// Models are used to prepare
-// store data to be sent to an API.
-import { createCustomer } from '../../models/Customer'
+import { createShippingAddress } from '../../models/ShippingAddress'
 import { createRequest } from '../../models/Request'
 
 import { SUBMIT } from '../action-types'
 import { ERROR, SUCCESS } from '../mutation-types'
 
-// We're using reusable form modules
-// to store the data of our forms.
 import address from './forms/address'
 import contact from './forms/contact'
-import name from './forms/name'
-import contract from './forms/contract'
 
 const actions = {
   async [SUBMIT]({ commit, state }) {
     try {
-      const customerData = createCustomer({
+      const customerData = createShippingAddress({
         address: state.address.rows[0],
-
-        contacts: state.contact.rows,
-        name: state.name.rows[0]
+        contact: state.contact.rows[0]
       })
       const requestData = createRequest(customerData)
 
@@ -59,26 +49,20 @@ const state = () => ({
 
 const modules = {
   address,
-  contact,
-  name
+  contact
 }
 
 export const { mapFields: mapAddressFields } = createHelpers({
-  getterType: `customer/address/getField`,
-  mutationType: `customer/address/updateField`
+  getterType: `shippingAddress/address/getField`,
+  mutationType: `shippingAddress/address/updateField`
 })
 
-export const { mapMultiRowFields: mapContactMultiRowFields } = createHelpers({
-  getterType: `customer/contact/getField`,
-  mutationType: `customer/contact/updateField`
+export const { mapFields: mapContactFields } = createHelpers({
+  getterType: `shippingAddress/contact/getField`,
+  mutationType: `shippingAddress/contact/updateField`
 })
 
-export const { mapFields: mapNameFields } = createHelpers({
-  getterType: `customer/name/getField`,
-  mutationType: `customer/name/updateField`
-})
-
-export const customer = {
+export const shippingAddress = {
   namespaced: true,
   actions,
   mutations,
