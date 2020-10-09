@@ -17,7 +17,6 @@ import { ERROR, SUCCESS } from '../mutation-types'
 import address from './forms/address'
 import contact from './forms/contact'
 import name from './forms/name'
-import contract from './forms/contract'
 
 const actions = {
   async [SUBMIT]({ commit, state }) {
