@@ -8,10 +8,6 @@
       <router-link :to="{ name: `shipping-address` }" class="nav-item">
         New Shipping Address
       </router-link>
-      |
-      <router-link :to="{ name: `about` }" class="nav-item">
-        About
-      </router-link>
     </nav>
     <router-view />
   </div>

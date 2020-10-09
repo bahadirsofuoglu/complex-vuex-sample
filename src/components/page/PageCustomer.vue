@@ -88,14 +88,7 @@ import {
   mapContactMultiRowFields,
   mapNameFields
 } from '../../store/modules/customer'
-// We're dynamically registering the
-// `customer` store module. This has
-// the benefit of only loading this
-// module, if it's actually needed.
-// Before registering the module, we're
-// checking if it's already registered
-// which can happen in combination with
-// webpacks hot reloading.
+
 if (!store.state.customer) store.registerModule(`customer`, customer)
 const {
   mapActions: mapCustomerActions,
@@ -106,7 +99,7 @@ const { mapMutations: mapContactMutations } = createNamespacedHelpers(
 )
 export default {
   name: `PageCustomer`,
-  // Here we're wiring everything up.
+
   computed: {
     ...mapCustomerState([`error`, `success`]),
     // You can read more about mapping field
